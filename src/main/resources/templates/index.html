@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Employee Management System</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/bootstrap.css" rel="stylesheet">
+
+	<!-- Custom CSS-->
+	<link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+	<nav>
+		<ul>
+			<li><a th:href="@{/index}">Home</a></li>
+			<li style="float: right;"><a href="#">Register</a></li>
+			<li style="float: right;"><a href="#">Login</a></li>
+
+		</ul>
+	</nav>
+
+	<section>
+		<div class="container">
+			<br>
+			<h1 style="text-align: center;">ပစ္စည်းစာရင်း</h1>
+			<br>
+
+			<div class="row">
+				<div class="col-md-3 card">
+					<a th:href="@{/phone}">
+						<div class="product-image">
+							<img src="img/phone.jpeg" alt="phone" class="img-fluid img">
+						</div>
+					</a>
+					<div class="product-info">
+						<div class="product-name">
+							<h3>Phone</h3>
+						</div>
+					</div>
+
+				</div>
+				<div class="col-md-3 card">
+					<a th:href="@{/electronic-product}">
+						<div class="product-image">
+							<img src="img/electrical-tool.jpeg" alt="phone" class="img-fluid img">
+						</div>
+					</a>
+					<div class="product-info">
+						<div class="product-name">
+							<h3>မီးပစ္စည်း</h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 card">
+					<a th:href="@{/refrigerator}">
+						<div class="product-image">
+							<img src="img/refrigerator.jpeg" alt="phone" class="img-fluid img">
+						</div>
+					</a>
+					<div class="product-info">
+						<div class="product-name">
+							<h3>ရေခဲသေတ္တာ</h3>
+						</div>
+					</div>
+				</div>
+				<!--
+				<div class="col-md-3 card">
+					<a th:href="@{/washingMachine}">
+						<div class="product-image">
+							<img src="img/washing-machine.jpeg" alt="phone" class="img-fluid img">
+						</div>
+					</a>
+					
+					<div class="product-info">
+						<div class="product-name">
+							<h3>အဝတ်လျှော်စက်</h3>
+						</div>
+					</div>
+					
+				</div>
+				-->
+				<div class="col-md-3 card">
+					<a th:href="@{/tv}">
+						<div class="product-image">
+							<img src="img/TV.jpeg" alt="phone" class="img-fluid img">
+						</div>
+					</a>
+					<div class="product-info">
+						<div class="product-name">
+							<h3>TV</h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 card">
+					<a th:href="@{/generator}">
+						<div class="product-image">
+							<img src="img/generator.jpeg" alt="phone" class="img-fluid img">
+						</div>
+					</a>
+					<div class="product-info">
+						<div class="product-name">
+							<h3>မီးစက်</h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 card">
+					<a th:href="@{/furniture}">
+						<div class="product-image">
+							<img src="img/furniture.jpeg" alt="phone" class="img-fluid img">
+						</div>
+					</a>
+					<div class="product-info">
+						<div class="product-name">
+							<h3>ခန်းဝင်ပစ္စည်း </h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 card">
+					<a th:href="@{/cycle}">
+						<div class="product-image">
+							<img src="img/cycle.jpeg" alt="phone" class="img-fluid img">
+						</div>
+					</a>
+					<div class="product-info">
+						<div class="product-name">
+							<h3>စက်ဘီးဆိုင်ကယ်</h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 card">
+					<a th:href="@{/aircon}">
+						<div class="product-image">
+							<img src="img/aircon.jpeg" alt="phone" class="img-fluid img">
+						</div>
+					</a>
+					<div class="product-info">
+						<div class="product-name">
+							<h3>အဲကွန်း</h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 card">
+					<a th:href="@{/bathproduct}">
+						<div class="product-image">
+							<img src="img/bathroom.jpeg" alt="phone" class="img-fluid img">
+						</div>
+					</a>
+					<div class="product-info">
+						<div class="product-name">
+							<h3>ရေချိုးခန်းသုံးပစ္စည်း</h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 card">
+					<a th:href="@{/kitchen-product}">
+						<div class="product-image">
+							<img src="img/kitchen.jpeg" alt="phone" class="img-fluid img">
+						</div>
+					</a>
+					<div class="product-info">
+						<div class="product-name">
+							<h3>မီးဖိုချောင်သုံးပစ္စည်း</h3>
+						</div>
+					</div>
+				</div>
+				<!--
+				<div class="col-md-3 card">
+					<a th:href="@{/safe}">
+						<div class="product-image">
+							<img src="img/safe.jpeg" alt="phone" class="img-fluid img">
+						</div>
+					</a>
+					<div class="product-info">
+						<div class="product-name">
+							<h3>မီးခံသေတ္တာ</h3>
+						</div>
+					</div>
+				</div>
+				-->
+			</div>
+		</div>
+	</section>
+
+
+
+	<script src="js/bootstrap.bundle.js"></script>
+	<script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+.total-amount-table{
+	width: 50%;
+}
+
+h1{
+	text-align: center;
+}
+
+nav {
+	background-color: rgb(255, 146, 0);
+}
+
+nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav li {
+	display: inline-block;
+	margin-right: 20px;
+}
+
+nav a {
+	display: block;
+	color: #fff;
+	padding: 10px;
+	text-decoration: none;
+	font-size: 25px; 
+}
+
+nav a:hover {
+	background-color: rgb(227, 139, 0);
+	text-decoration: none;
+	color: #fff;
+}

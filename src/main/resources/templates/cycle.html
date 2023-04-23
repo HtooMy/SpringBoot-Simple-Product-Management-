@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>YeeShin Product Management System</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/all-product.css">
+</head>
+
+<body>
+	<section>
+		<nav>
+		<ul>
+			<li><a th:href="@{/index}">Home</a></li>
+			<li style="float: right;"><a href="#">Register</a></li>
+			<li style="float: right;"><a href="#">Login</a></li>
+		</ul>
+	</nav>
+		<div class="container my-2">
+		<div class="nav-bar">
+			<h1>စက်ဘီးဆိုင်ကယ်စာရင်း</h1>
+		</div>
+
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">
+			စာရင်းအသစ်ထည့်</button>
+		<br> <br>
+		<table border=" 1" class="table table-striped table-responsive-md">
+			<thead>
+				<th>ID</th>
+				<th>ပစ္စည်းအမည်</th>
+				<th>ပစ္စည်းမော်ဒယ်</th>
+				<th>ပစ္စည်းအရေတွက်</th>
+				<th>ပစ္စည်းစျေးနှုန်း</th>
+				<th>Total Amount</th>
+				<th>လုပ်ဆောင်မှု</th>
+			</thead>
+			<tbody>
+				<tr th:each="cycle : ${cycles}">
+					<td th:text="${cycle.id}"></td>
+					<td th:text="${cycle.productName}"></td>
+					<td th:text="${cycle.productModel}"></td>
+					<td th:text="${cycle.productQuantity}" id="product-quantity"></td>
+					<td th:text="${cycle.productPrice}" id="product-price"></td>
+					<td th:text="${cycle.productQuantity * cycle.productPrice}"></td>
+					<td>
+						<a id="editButton" th:href="@{/cycle/findById(id=${cycle.id})}"
+							class="btn btn-primary">စာရင်းပြင်</a>
+						<a id="editButton" th:href="@{/cycle/findById(id=${cycle.id})}"
+							class="btn btn-success">မှတ်ချက််</a>
+						<a id="deleteButton" th:href="@{cycle/delete(id=${cycle.id})}"
+							class="btn btn-danger">စာရင်းဖျက်</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	</section>
+	
+
+	<!-- Delete model -->
+	<div class="modal" id="deleteModel" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">စာရင်းဖျက်မှုအတည်ပြုခြင်း</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>ဤပစ္စည်းအားစာရင်းထဲမှထုတ်ပစ်ရန်သေချာပါသလား </p>
+				</div>
+				<div class="modal-footer">
+					<a class="btn btn-primary" id="confirmDeleteButton" href="">သေချာသည် </a>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">မလုပ်တော့ပါ</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Add Modal -->
+	<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">စာရင်းအသစ်ထည့်ခြင်း</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form th:action="@{/cycle/addNew}" method="post">
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">ပစ္စည်းအမည်</label>
+							<input type="text" class="form-control" id="recipient-name" name="productName">
+						</div>
+
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">ပစ္စည်းမော်ဒယ်</label>
+							<input type="text" class="form-control" id="recipient-name" name="productModel">
+						</div>
+
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">ပစ္စည်းအရေတွက်</label>
+							<input type="text" class="form-control" id="recipient-name" name="productQuantity">
+						</div>
+
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">ပစ္စည်းစျေးနှုန်း</label>
+							<input type="text" class="form-control" id="recipient-name" name="productPrice">
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary">လုပ်ဆောင်မည်</button>
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">ပိတ်မည်</button>
+						</div>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- Edit Model -->
+	<div class="modal fade" id="editModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">ပစ္စည်းစာရင်းပြင်ဆင်ခြင်း</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form th:action="@{/cycle/update}" method="put">
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">ID</label>
+							<input type="text" class="form-control" id="idEdit" name="id" </div>
+
+							<div class="form-group">
+								<div class="form-group">
+									<label for="recipient-name" class="col-form-label">ပစ္စည်းအမည်</label>
+									<input type="text" class="form-control" id="nameEdit" name="productName" </div>
+
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">ပစ္စည်းမော်ဒယ်</label>
+										<input type="text" class="form-control" id="modelEdit" name="productModel">
+									</div>
+
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">ပစ္စည်းအရေတွက်</label>
+										<input type="text" class="form-control" id="quantityEdit"
+											name="productQuantity">
+									</div>
+
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">ပစ္စည်းစျေးနှုန်း</label>
+										<input type="text" class="form-control" id="priceEdit" name="productPrice">
+									</div>
+									<div class="form-group">
+										<button type="submit" class="btn btn-primary">ပြောင်းလဲမည် </button>
+										<button type="button" class="btn btn-secondary"
+											data-dismiss="modal">မလုပ်တော့ပါ</button>
+									</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!-- javascripts -->
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/cycle.js"></script>
+</body>
+
+</html>

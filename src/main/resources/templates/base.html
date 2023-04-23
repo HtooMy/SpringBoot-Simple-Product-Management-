@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>YeeShin Product Management System</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body>
+	<nav>
+		<ul>
+			<li><a th:href="@{/index}">Home</a></li>
+			<li style="float: right;"><a href="#">Register</a></li>
+			<li style="float: right;"><a href="#">Login</a></li>
+		</ul>
+	</nav>
+	<style>
+		nav {
+			background-color: rgb(255, 146, 0);
+		}
+
+		nav ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		nav li {
+			display: inline-block;
+			margin-right: 20px;
+		}
+
+		nav a {
+			display: block;
+			color: #fff;
+			padding: 10px;
+			text-decoration: none;
+			font-size: 25px;
+		}
+
+		nav a:hover {
+			background-color: rgb(227, 139, 0);
+			text-decoration: none;
+			color: #fff;
+		}
+	</style>
+
+	<div th:replace="${content}"></div>
+	<!-- javascripts -->
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
